@@ -89,8 +89,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                             JSONArray array = obj.getJSONArray("results");
                             JSONObject obj1 = array.getJSONObject(0);
                             double result = obj1.getDouble("elevation");
-                            tv.setText(String.valueOf(result));
 
+
+                            tv.setText(String.valueOf(result));
 
 
                         } catch (JSONException e) {
