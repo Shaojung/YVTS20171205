@@ -1,6 +1,8 @@
 package tw.gov.yvts.yvts20171205;
 
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -25,6 +27,9 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
@@ -105,5 +110,18 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         });
         queue.add(request);
         queue.start();
+    }
+    public void click2(View v)
+    {
+        Geocoder geocoder = new Geocoder(MainActivity.this);
+        try {
+            List<Address> list = geocoder.getFromLocation(24.9318495, 121.1717214, 3);
+            Address addr = list.get(0);
+            String str = addr.getAddressLine(0);
+            tv.setText(str);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
